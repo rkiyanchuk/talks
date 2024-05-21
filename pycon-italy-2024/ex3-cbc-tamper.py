@@ -21,9 +21,9 @@ img.save("encrypted-cbc.bmp")
 
 # Tamper with encrypted image
 evil_img = Image("evil.bmp")
-img.tamper_img(evil_img, "tampered-cbc.bmp")
+img.tamper_img(evil_img, "encrypted-cbc-tampered.bmp")
 
-# Decrypt tampered image
+# Decrypt tampered image with AES CBC
 cipher = Cipher(algorithms.AES256(key), modes.CBC(iv))
 decryptor = cipher.decryptor()
 unpadder = padding.PKCS7(256).unpadder()
