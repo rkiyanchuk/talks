@@ -29,7 +29,6 @@ decryptor = cipher.decryptor()
 unpadder = padding.PKCS7(256).unpadder()
 
 padded = decryptor.update(img.data) + decryptor.finalize()
-plaintext = unpadder.update(padded)
+img.data = unpadder.update(padded)
 
-img.data = plaintext
 img.save("decrypted-cbc-tampered.bmp")
